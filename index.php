@@ -1,17 +1,9 @@
-<?php require_once 'html/menu.php'; ?>
+<?php require_once 'html/menu.html'; ?>
 
 <main class="main-content">
     <div class="container">
-
         <!-- Portada académica -->
         <div class="text-center my-5 py-4">
-            <p class="fw-bold fs-5 mb-1 text-uppercase letter-spacing-wide">Universidad Tecnológica de Panamá</p>
-            <p class="fw-semibold mb-1">Centro Regional de Coclé</p>
-            <p class="mb-4">Facultad de Ingeniería en Sistemas</p>
-            <hr class="w-50 mx-auto my-3">
-            <p class="mb-1">Desarrollo de Software VII &copy; &mdash; Facilitadora del Curso: <strong>Ing. María Y. Tejedor M. de Fernández</strong></p>
-            <p class="text-muted">Asignación desarrollada por: <em>Estudiantes de Desarrollo de Software VII</em></p>
-            <hr class="w-50 mx-auto my-4">
             <h2 class="fw-bold mb-1">Laboratorio 3</h2>
             <p class="lead text-muted">POO &bull; Estructuras de Control &bull; Arreglos &bull; Formularios</p>
         </div>
@@ -71,4 +63,4 @@
     </div>
 </main>
 
-<?php require_once 'html/footer.php'; ?>
+<?php require_once 'html/footer.html'; ?>
