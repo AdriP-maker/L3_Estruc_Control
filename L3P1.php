@@ -1,4 +1,4 @@
-<?php require_once 'php/menu.php'; ?>
+<?php require_once 'html/menu.php'; ?>
 
 <main class="main-content">
     <div class="container">
@@ -32,4 +32,4 @@
     </div>
 </main>
 
-<?php require_once 'php/footer.php'; ?>
+<?php require_once 'html/footer.php'; ?>

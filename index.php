@@ -1,15 +1,23 @@
-<?php require_once 'php/menu.php'; ?>
+<?php require_once 'html/menu.php'; ?>
 
 <main class="main-content">
     <div class="container">
-        <div class="text-center my-5">
-            <h1 class="display-5 fw-bold mb-3">Laboratorio 3</h1>
+
+        <!-- Portada académica -->
+        <div class="text-center my-5 py-4">
+            <p class="fw-bold fs-5 mb-1 text-uppercase letter-spacing-wide">Universidad Tecnológica de Panamá</p>
+            <p class="fw-semibold mb-1">Centro Regional de Coclé</p>
+            <p class="mb-4">Facultad de Ingeniería en Sistemas</p>
+            <hr class="w-50 mx-auto my-3">
+            <p class="mb-1">Desarrollo de Software VII &copy; &mdash; Facilitadora del Curso: <strong>Ing. María Y. Tejedor M. de Fernández</strong></p>
+            <p class="text-muted">Asignación desarrollada por: <em>Estudiantes de Desarrollo de Software VII</em></p>
+            <hr class="w-50 mx-auto my-4">
+            <h2 class="fw-bold mb-1">Laboratorio 3</h2>
             <p class="lead text-muted">POO &bull; Estructuras de Control &bull; Arreglos &bull; Formularios</p>
-            <hr class="my-4 w-50 mx-auto">
         </div>
 
+        <!-- Tarjetas de los 4 programas -->
         <div class="row g-4 justify-content-center mb-5">
-            <!-- Tarjeta P1 -->
             <div class="col-md-6 col-lg-3">
                 <div class="card h-100 shadow-sm border-0 text-center">
                     <div class="card-body p-4">
@@ -22,7 +30,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Tarjeta P2 -->
             <div class="col-md-6 col-lg-3">
                 <div class="card h-100 shadow-sm border-0 text-center">
                     <div class="card-body p-4">
@@ -35,7 +42,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Tarjeta P3 -->
             <div class="col-md-6 col-lg-3">
                 <div class="card h-100 shadow-sm border-0 text-center">
                     <div class="card-body p-4">
@@ -48,13 +54,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Tarjeta P4 -->
             <div class="col-md-6 col-lg-3">
                 <div class="card h-100 shadow-sm border-0 text-center">
                     <div class="card-body p-4">
                         <i class="bi bi-grid-3x3 fs-1 text-danger mb-3 d-block"></i>
                         <h5 class="card-title fw-bold">Programa 4</h5>
-                        <p class="card-text text-muted small">Inventario de productos por sucursal (matriz 3×4)</p>
+                        <p class="card-text text-muted small">Inventario de productos por sucursal (matriz 3&times;4)</p>
                         <a href="L3P4.php" class="btn btn-danger btn-sm mt-2">
                             <i class="bi bi-arrow-right-circle me-1"></i>Abrir
                         </a>
@@ -62,7 +67,8 @@
                 </div>
             </div>
         </div>
+
     </div>
 </main>
 
-<?php require_once 'php/footer.php'; ?>
+<?php require_once 'html/footer.php'; ?>
