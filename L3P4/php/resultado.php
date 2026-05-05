@@ -10,7 +10,6 @@ if (!isset($inv) || !isset($opcion) || $opcion === '') return;
 
 $sucursales = $inv->getSucursales();
 $productos  = $inv->getProductos();
-$iconos     = ['💻', '📱', '📲', '🎧'];
 $matriz     = $inv->getMatriz();
 ?>
 
@@ -33,7 +32,7 @@ $matriz     = $inv->getMatriz();
                         <tr>
                             <th>Sucursal</th>
                             <?php foreach ($productos as $k => $prod): ?>
-                                <th class="text-center"><?= $iconos[$k] ?> <?= $prod ?></th>
+                                <th class="text-center"> <?= $prod ?></th>
                             <?php endforeach; ?>
                             <th class="text-center text-success">Total</th>
                         </tr>
@@ -90,7 +89,7 @@ $matriz     = $inv->getMatriz();
                     <tbody>
                         <?php foreach ($productos as $j => $prod): ?>
                             <tr>
-                                <td><?= $iconos[$j] ?> <strong><?= $prod ?></strong></td>
+                                <td> <strong><?= $prod ?></strong></td>
                                 <td class="text-center text-primary"><strong><?= $totalesProd[$j] ?></strong></td>
                             </tr>
                         <?php endforeach; ?>

@@ -9,7 +9,6 @@
  */
 $sucursales = ['Centro', 'Norte', 'Oeste'];
 $productos  = ['Laptops', 'Tablets', 'Smartphones', 'Accesorios'];
-$iconos     = ['💻', '📱', '📲', '🎧'];
 ?>
 
 <?php if (!empty($mensajeError)): ?>
@@ -39,7 +38,7 @@ $iconos     = ['💻', '📱', '📲', '🎧'];
             <div class="matrix-header">
                 <div class="col-label-suc">Sucursal</div>
                 <?php foreach ($productos as $k => $prod): ?>
-                    <div class="col-label-prod"><?= $iconos[$k] ?> <?= $prod ?></div>
+                    <div class="col-label-prod"> <?= $prod ?></div>
                 <?php endforeach; ?>
             </div>
 
@@ -50,7 +49,7 @@ $iconos     = ['💻', '📱', '📲', '🎧'];
                     <?php foreach ($productos as $j => $prod): ?>
                         <?php
                             $campo      = "m{$i}{$j}";
-                            $valor      = htmlspecialchars($_POST[$campo] ?? '');
+                            $valor      = htmlspecialchars($_POST[$campo] ?? '0');
                             $claseError = isset($erroresCampos[$campo]) ? 'input-error' : '';
                         ?>
                         <input type="number"
@@ -66,7 +65,7 @@ $iconos     = ['💻', '📱', '📲', '🎧'];
             <hr>
 
             <div class="row">
-                <div class="col-sm-7">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label for="sel-operacion" class="control-label">
                             <span class="glyphicon glyphicon-list"></span>
@@ -89,14 +88,26 @@ $iconos     = ['💻', '📱', '📲', '🎧'];
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-5" style="padding-top:25px;">
+                <div class="col-sm-3" style="padding-top:25px;">
                     <button type="submit" class="btn btn-primary btn-block">
                         <span class="glyphicon glyphicon-play"></span>
                         Calcular
                     </button>
                 </div>
+                <div class="col-sm-3" style="padding-top:25px;">
+                    <button type="button" class="btn btn-primary btn-block" id="btn-limpiar">
+                        <span class="glyphicon glyphicon-play"></span>
+                        Limpiar
+                    </button>
+                </div>  
             </div>
 
         </form>
     </div>
 </div>
+
+<!-- Se escribieron los 2 para evitar problemas de ruta o carga -->
+<script src="L3P4/js/validarForm.js"></script>
+<script src="<?= dirname($_SERVER['SCRIPT_NAME']) ?>/L3P4/js/validarForm.js"></script>
+<script src="L3P4/js/BtLimpiar.js"></script>
+<script src="<?= dirname($_SERVER['SCRIPT_NAME']) ?>/L3P4/js/BtLimpiar.js"></script>
