@@ -1,8 +1,6 @@
 <?php
 /**
- * PHP/resultado.php
- * ──────────────────────────────────────────────
- * Muestra el resultado de la operación elegida en formato tabular.
+ * PHP/resultado.php — Tablas de resultado según opción elegida.
  *
  * Variables esperadas desde L3P4.php:
  *  - $inv    : instancia de Inventario (ya validada)
@@ -16,131 +14,129 @@ $iconos     = ['💻', '📱', '📲', '🎧'];
 $matriz     = $inv->getMatriz();
 ?>
 
-<!-- =============================================
-     PHP/resultado.php
-     Tablas de resultado según opción elegida
-     ============================================= -->
-<div class="panel-dark" id="resultado">
-  <div class="panel-heading">
-    <span class="glyphicon glyphicon-stats"></span>
-    &nbsp; Resultado — Opción <?= htmlspecialchars($opcion) ?>
-  </div>
-  <div class="panel-body">
+<div class="panel panel-default" id="resultado">
+    <div class="panel-heading">
+        <strong><span class="glyphicon glyphicon-stats"></span>
+        Resultado — Opción <?= htmlspecialchars($opcion) ?></strong>
+    </div>
+    <div class="panel-body">
 
-    <?php
-    // ── Opción 1: Matriz completa ─────────────────────────
-    if ($opcion === '1'):
-      $totalesSuc = $inv->totalesPorSucursal();
-    ?>
-      <p class="resultado-titulo">// Matriz Completa de Inventario (3 sucursales × 4 productos)</p>
-      <div class="table-responsive">
-        <table class="table-dark-custom">
-          <thead>
-            <tr>
-              <th>Sucursal</th>
-              <?php foreach ($productos as $k => $prod): ?>
-                <th><?= $iconos[$k] ?> <?= $prod ?></th>
-              <?php endforeach; ?>
-              <th class="th-total">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($sucursales as $i => $suc): ?>
-              <tr>
-                <td class="td-suc"><?= $suc ?></td>
-                <?php foreach ($matriz[$i] as $val): ?>
-                  <td><?= $val ?></td>
-                <?php endforeach; ?>
-                <td class="td-total"><?= $totalesSuc[$i] ?></td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
+        <?php if ($opcion === '1'):
+            $totalesSuc = $inv->totalesPorSucursal(); ?>
 
-    <?php
-    // ── Opción 2: Totales por Sucursal ────────────────────
-    elseif ($opcion === '2'):
-      $totalesSuc = $inv->totalesPorSucursal();
-    ?>
-      <p class="resultado-titulo">// Total de Productos por Sucursal (vector fila)</p>
-      <div class="table-responsive">
-        <table class="table-dark-custom">
-          <thead>
-            <tr><th>Sucursal</th><th class="th-total">Total de Productos</th></tr>
-          </thead>
-          <tbody>
-            <?php foreach ($sucursales as $i => $suc): ?>
-              <tr>
-                <td class="td-suc"><?= $suc ?></td>
-                <td class="td-total"><?= $totalesSuc[$i] ?></td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
+            <p class="resultado-titulo">// Matriz completa de inventario (3 sucursales × 4 productos)</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sucursal</th>
+                            <?php foreach ($productos as $k => $prod): ?>
+                                <th class="text-center"><?= $iconos[$k] ?> <?= $prod ?></th>
+                            <?php endforeach; ?>
+                            <th class="text-center text-success">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($sucursales as $i => $suc): ?>
+                            <tr>
+                                <td><strong><?= $suc ?></strong></td>
+                                <?php foreach ($matriz[$i] as $val): ?>
+                                    <td class="text-center"><?= $val ?></td>
+                                <?php endforeach; ?>
+                                <td class="text-center text-primary"><strong><?= $totalesSuc[$i] ?></strong></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
 
-    <?php
-    // ── Opción 3: Totales por Tipo de Producto ────────────
-    elseif ($opcion === '3'):
-      $totalesProd = $inv->totalesPorProducto();
-    ?>
-      <p class="resultado-titulo">// Total de Productos por Tipo (vector columna)</p>
-      <div class="table-responsive">
-        <table class="table-dark-custom">
-          <thead>
-            <tr><th>Tipo de Producto</th><th class="th-total">Total en todas las Sucursales</th></tr>
-          </thead>
-          <tbody>
-            <?php foreach ($productos as $j => $prod): ?>
-              <tr>
-                <td class="td-suc"><?= $iconos[$j] ?> <?= $prod ?></td>
-                <td class="td-total"><?= $totalesProd[$j] ?></td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
+        <?php elseif ($opcion === '2'):
+            $totalesSuc = $inv->totalesPorSucursal(); ?>
 
-    <?php
-    // ── Opción 4: Sucursal con mayor inventario ───────────
-    elseif ($opcion === '4'):
-      $totalesSuc = $inv->totalesPorSucursal();
-      $ganador    = $inv->sucursalMayorInventario();
-    ?>
-      <p class="resultado-titulo">// Sucursal con Mayor Inventario Total</p>
-      <div class="table-responsive">
-        <table class="table-dark-custom">
-          <thead>
-            <tr><th>Sucursal</th><th class="th-total">Total de Productos</th><th>Estado</th></tr>
-          </thead>
-          <tbody>
-            <?php foreach ($sucursales as $i => $suc): ?>
-              <?php $esGanador = ($i === $ganador['idx']); ?>
-              <tr class="<?= $esGanador ? 'winner-row' : '' ?>">
-                <td class="td-suc">
-                  <?= $suc ?>
-                  <?php if ($esGanador): ?>
-                    <span class="winner-badge">★ MAYOR</span>
-                  <?php endif; ?>
-                </td>
-                <td class="<?= $esGanador ? 'td-ganador' : 'td-total' ?>">
-                  <?= $totalesSuc[$i] ?>
-                </td>
-                <td><?= $esGanador ? '🏆 Mayor inventario' : '—' ?></td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
+            <p class="resultado-titulo">// Total de productos por sucursal (vector fila)</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Sucursal</th>
+                            <th class="text-center text-success">Total de Productos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($sucursales as $i => $suc): ?>
+                            <tr>
+                                <td><strong><?= $suc ?></strong></td>
+                                <td class="text-center text-primary"><strong><?= $totalesSuc[$i] ?></strong></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
 
-      <div class="alerta alerta-success" style="margin-top:14px;">
-        🏆 La sucursal <strong><?= $ganador['nombre'] ?></strong>
-        tiene el mayor inventario con
-        <strong><?= $ganador['total'] ?></strong> productos en total.
-      </div>
+        <?php elseif ($opcion === '3'):
+            $totalesProd = $inv->totalesPorProducto(); ?>
 
-    <?php endif; ?>
+            <p class="resultado-titulo">// Total por tipo de producto (vector columna)</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Producto</th>
+                            <th class="text-center text-success">Total en todas las sucursales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($productos as $j => $prod): ?>
+                            <tr>
+                                <td><?= $iconos[$j] ?> <strong><?= $prod ?></strong></td>
+                                <td class="text-center text-primary"><strong><?= $totalesProd[$j] ?></strong></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
 
-  </div><!-- /panel-body -->
-</div><!-- /panel-dark -->
+        <?php elseif ($opcion === '4'):
+            $totalesSuc = $inv->totalesPorSucursal();
+            $ganador    = $inv->sucursalMayorInventario(); ?>
+
+            <p class="resultado-titulo">// Sucursal con mayor inventario total</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Sucursal</th>
+                            <th class="text-center text-success">Total de Productos</th>
+                            <th class="text-center">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($sucursales as $i => $suc):
+                            $esGanador = ($i === $ganador['idx']); ?>
+                            <tr class="<?= $esGanador ? 'winner-row' : '' ?>">
+                                <td>
+                                    <strong><?= $suc ?></strong>
+                                    <?php if ($esGanador): ?>
+                                        <span class="winner-badge">★ MAYOR</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center <?= $esGanador ? 'td-ganador' : 'text-primary' ?>">
+                                    <strong><?= $totalesSuc[$i] ?></strong>
+                                </td>
+                                <td class="text-center"><?= $esGanador ? '🏆 Mayor inventario' : '—' ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-success" style="margin-top:10px;">
+                🏆 La sucursal <strong><?= $ganador['nombre'] ?></strong>
+                tiene el mayor inventario con
+                <strong><?= $ganador['total'] ?></strong> productos en total.
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+</div>
