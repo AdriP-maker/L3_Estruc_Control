@@ -28,7 +28,9 @@ $iconos     = ['💻', '📱', '📲', '🎧'];
 
 <div class="panel panel-default" id="formulario">
     <div class="panel-heading">
-        <strong><span class="glyphicon glyphicon-edit"></span> Ingresar Inventario por Sucursal</strong>
+        <h4 class="panel-title">
+            <span class="glyphicon glyphicon-edit"></span> Ingresar Inventario por Sucursal
+        </h4>
     </div>
     <div class="panel-body">
         <form method="POST" action="L3P4.php" id="form-inventario">
@@ -55,7 +57,7 @@ $iconos     = ['💻', '📱', '📲', '🎧'];
                                name="<?= $campo ?>"
                                id="<?= $campo ?>"
                                class="form-control input-matrix <?= $claseError ?>"
-                               min="0" placeholder="0"
+                               min="0" placeholder=""
                                value="<?= $valor ?>">
                     <?php endforeach; ?>
                 </div>

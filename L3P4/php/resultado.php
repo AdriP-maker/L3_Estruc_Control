@@ -16,8 +16,10 @@ $matriz     = $inv->getMatriz();
 
 <div class="panel panel-default" id="resultado">
     <div class="panel-heading">
-        <strong><span class="glyphicon glyphicon-stats"></span>
-        Resultado — Opción <?= htmlspecialchars($opcion) ?></strong>
+        <h4 class="panel-title">
+            <span class="glyphicon glyphicon-stats"></span>
+            Resultado — Opción <?= htmlspecialchars($opcion) ?>
+        </h4>
     </div>
     <div class="panel-body">
 
