@@ -124,7 +124,7 @@ $matriz     = $inv->getMatriz();
                                 <td class="text-center <?= $esGanador ? 'td-ganador' : 'text-primary' ?>">
                                     <strong><?= $totalesSuc[$i] ?></strong>
                                 </td>
-                                <td class="text-center"><?= $esGanador ? '🏆 Mayor inventario' : '—' ?></td>
+                                <td class="text-center"><?= $esGanador ? 'Mayor inventario' : '—' ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
