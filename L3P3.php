@@ -1,7 +1,9 @@
-<?php 
+<?php
 // Carga el menú de navegación principal
-require_once 'html/menu.html'; 
+require_once 'html/menu.html';
 ?>
+<link href="L3P3/css/estilos.css" rel="stylesheet">
+<script src="L3P3/js/script.js" defer></script>
 
 <main class="main-content">
     <div class="container">
