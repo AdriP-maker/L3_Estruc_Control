@@ -1,0 +1,42 @@
+<h2>Registro de Ventas</h2>
+
+<!-- Grupo de control para definir la dimensión de la tabla -->
+<div class="input-group">
+    <label>Cantidad de meses:</label>
+    <input type="number" id="mesesCount" min="1" placeholder="Ej: 3">
+    <button onclick="generarCampos()">Generar Tabla</button>
+</div>
+
+<!-- Contenedor para mostrar alertas o mensajes de error -->
+<div id="mensaje" class="mensaje oculto"></div>
+
+<!-- Espacio donde se renderiza la tabla de entrada dinámicamente -->
+<div id="tablaContenedor"></div>
+
+<!-- Controles para la selección de cálculos y limpieza de datos -->
+<div id="formControls" style="display:none;">
+    <div class="selector-wrapper">
+        <label for="opcion">¿Qué desea calcular?</label>
+        <select id="opcion" onchange="enviarAPHP()">
+            <option value="" disabled selected>Seleccione una opción...</option>
+            <option value="tabla">Mostrar tabla</option>
+            <option value="totdep">Total por departamento</option>
+            <option value="totmes">Total por mes</option>
+            <option value="total">Total general</option>
+            <option value="mayordep">Departamento con mayor venta</option>
+            <option value="mayormes">Mes con mayor venta</option>
+        </select>
+    </div>
+    <!-- Botón para reiniciar el formulario -->
+    <button id="delete" onclick="limpiar()">Limpiar Todo</button>
+</div>
+
+<!-- Identificador visual para la sección de salida -->
+<div class="resultados-header">
+    <h3>Panel de Resultados</h3>
+</div>
+
+<!-- Contenedor donde se inyectan los resultados procesados por PHP -->
+<div id="resultado">
+    <p class="placeholder-text">Seleccione una opción para ver los cálculos...</p>
+</div>
