@@ -6,18 +6,12 @@
  *   - $alumnosOrd    : array de objetos Alumno (ordenados por promedio desc)
  *   - $opcion        : string '1'|'2'|'3'|'4' — operación seleccionada
  *
- * Usa: echo(), printf(), print(), foreach, for, if/elseif/else
- *
- * @author  Desarrollo de Software VII
- * @version 1.0
- * ================================================================
  */
 
 // ── Verificación de seguridad: no ejecutar si faltan variables ──
 if (!isset($alumnos) || !isset($opcion) || $opcion === '')
     return;
 ?>
-
 
 <!-- ============================================================ -->
 <!-- Inicia panel de resultados (Bootstrap 3 panel) -->
