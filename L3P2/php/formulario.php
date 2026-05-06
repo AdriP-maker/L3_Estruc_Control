@@ -1,11 +1,5 @@
 <?php
 /**
-
- * Este archivo genera el formulario HTML completo del Programa 2.
- * El formulario tiene dos etapas:
- *   1. Primero se selecciona la cantidad de alumnos (N)
- *   2. Luego se muestran N filas con campos: nombre + promedio
- *
  * Variables esperadas desde L3P2.php:
  *   - $mensajeError   : string — Mensaje de error del try-catch
  *   - $mensajeExito   : string — Mensaje de éxito tras procesar
