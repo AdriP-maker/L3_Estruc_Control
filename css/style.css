@@ -18,8 +18,13 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 17px; /* base para rem — Bootstrap 3 no la toca */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px !important; /* Bootstrap 3 fija 14px; esto lo pisa */
     background-color: var(--color-fondo);
     color: #333;
 }
@@ -37,7 +42,7 @@ body {
 
 .navbar-custom .navbar-brand {
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: #fff !important;
     letter-spacing: 1px;
 }
@@ -50,6 +55,7 @@ body {
 
 .navbar-custom .navbar-nav > li > a {
     color: rgba(255,255,255,0.85) !important;
+    font-size: 1rem !important;
     font-weight: 500;
     transition: color 0.3s, background-color 0.3s;
     border-radius: 6px;
@@ -84,6 +90,14 @@ body {
 }
 
 /* ================================================================
+   OVERRIDES Bootstrap 3 — corregir tamaños fijados en 14px
+   ================================================================ */
+.btn          { font-size: 1rem !important; }
+.form-control { font-size: 1rem !important; }
+label         { font-size: 1rem !important; }
+p, li, td, th, small, span:not(.glyphicon):not(.bi) { font-size: inherit; }
+
+/* ================================================================
    CONTENIDO PRINCIPAL
    ================================================================ */
 .main-content {
@@ -98,7 +112,7 @@ body {
     background: linear-gradient(135deg, var(--color-primario), var(--color-acento));
     color: rgba(255,255,255,0.85);
     padding: 1.5rem 0;
-    font-size: 0.85rem;
+    font-size: 1rem;
 }
 
 .footer-custom a {

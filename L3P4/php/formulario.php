@@ -95,8 +95,8 @@ $productos  = ['Laptops', 'Tablets', 'Smartphones', 'Accesorios'];
                     </button>
                 </div>
                 <div class="col-sm-3" style="padding-top:25px;">
-                    <button type="button" class="btn btn-primary btn-block" id="btn-limpiar">
-                        <span class="glyphicon glyphicon-play"></span>
+                    <button type="button" class="btn btn-warning btn-block" id="btn-limpiar">
+                        <span class="glyphicon glyphicon-refresh"></span>
                         Limpiar
                     </button>
                 </div>  

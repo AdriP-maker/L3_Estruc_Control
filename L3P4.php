@@ -27,6 +27,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $inv = new Inventario($matrizRaw);
         $inv->validar();
+
+        // Verificar que no todos los valores sean cero
+        $todosEnCero = true;
+        foreach ($matrizRaw as $fila) {
+            foreach ($fila as $val) {
+                if (intval($val) > 0) { $todosEnCero = false; break 2; }
+            }
+        }
+        if ($todosEnCero) {
+            throw new InvalidArgumentException(
+                'Todos los valores son cero. Ingresa al menos un valor mayor a cero.'
+            );
+        }
+
         $opcion = $_POST['operacion'] ?? '';
         if ($opcion === '') {
             throw new InvalidArgumentException('Debe seleccionar una operación del menú desplegable.');
